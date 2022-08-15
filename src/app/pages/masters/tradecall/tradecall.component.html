@@ -1,0 +1,97 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-atom">
+</ngx-spinner>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="card-title">
+                            <strong class="text-primary">{{
+                                tableTitle
+                                }}</strong>
+                        </h3>
+                        <div class="card-tools"></div>
+                    </div>
+
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm align-items-center justify-content-end">
+                            <button class="btn btn-sm mr-2 my-1 my-sm-0 btn-outline-primary" (click)="addNew()"
+                                type="button">
+                                <i class="fa fa-sm fa-plus-circle mr-1"></i><strong>ADD NEW</strong>
+                            </button>
+                            <button class="btn btn-sm mr-2 my-1 my-sm-0 btn-outline-success" (click)="onPageChange()"
+                                type="button">
+                                <i class="fa fa-sm fa-sync mr-1"></i><strong>REFRESH</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body height-fill-screen table-responsive p-0 card-scroll">
+                <table class="table text-nowrap table-sm table-striped table-bordered table-head-fixed">
+                    <thead>
+                        <tr>
+                            <th>SCRIPT NAME</th>
+                            <th style="text-align: center">BUY/SELL</th>
+                            <th style="text-align: center">ENTER</th>
+                            <th style="text-align: center">STOPLOSS</th>
+                            <th style="text-align: center">TARGET-1</th>
+                            <th style="text-align: center">TARGET-2</th>
+                            <th>STATUS</th>
+                            <th style="width: 150px">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of rows">
+                            <tr>
+                                <td>{{ item.tc_script }}</td>
+                                <td style="text-align: center">
+                                    <label *ngIf="item.tc_buysell === 1" class="label text-success">BUY</label>
+                                    <label *ngIf="item.tc_buysell === 2" class="label text-danger">SELL</label>
+                                </td>
+                                <td style="text-align: center">
+                                    {{ item.tc_entryprice }}
+                                </td>
+                                <td style="text-align: center">
+                                    {{ item.tc_stoploss }}
+                                </td>
+                                <td style="text-align: center">
+                                    {{ item.tc_target1 }}
+                                </td>
+                                <td style="text-align: center">
+                                    {{ item.tc_target2 }}
+                                </td>
+                                <td>
+                                    <ng-select [clearable]="false" class="custom" [(ngModel)]="item.tc_status"
+                                        (change)="changeStatus(item)" [appendTo]="'body'">
+                                        <ng-option [value]="1">IDEAL</ng-option>
+                                        <ng-option [value]="2">ENTER</ng-option>
+                                        <ng-option [value]="3">STOPLOSS</ng-option>
+                                        <ng-option [value]="4">TARGET-1</ng-option>
+                                        <ng-option [value]="5">TARGET-2</ng-option>
+                                        <ng-option [value]="6">CLOSED</ng-option>
+                                    </ng-select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-danger" type="button"
+                                        (click)="deleteItem(item.tc_id)">
+                                        <i class="far fa-trash-alt mr-1"></i><strong>DELETE</strong>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <ng-container *ngIf="rows?.length === 0">
+                    <div class="text-center my-2">No Records Found</div>
+                </ng-container>
+            </div>
+            <div class="card-footer clearfix">
+                <ngb-pagination class="float-right" [collectionSize]="totalRecords" [(page)]="currentPage"
+                    [pageSize]="10" [maxSize]="5" [boundaryLinks]="true" (pageChange)="onPageChange()">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+</section>

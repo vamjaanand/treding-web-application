@@ -1,0 +1,67 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-atom">
+</ngx-spinner>
+<div class="card-header">
+    <div class="card">
+        <section class="content-header">
+            <div class="left" style="float: left;width: 37.6%; height: 0%; border: 1px solid var(--light);
+                      background-color: var(--white);">
+                <div class="top">
+                    <div class="input-group input-group-lg">
+                        <input type="search" class="form-control form-control-lg" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-tools">
+                        <div class="card-body height-fill-screen table-responsive p-0 card-scroll">
+                            <div *ngFor="let item of data">
+                                <ul class="info-box">
+                                    <li (click)="openchat(item.id)">
+                                        <td>
+                                            <span class="contacts-list-name">
+                                                {{item.fullname}}
+                                                <small class="chat-contect-box-time right">{{item.time}}</small>
+                                            </span>
+                                        </td>
+                                        <span style="color:black;" class="contacts-list-msg">{{item.preview}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style=" width: 62%;height: 80%; float: left;" class="right">
+                <div style=" font-weight: bold;" class="card-header">
+                    <div class="top">To:
+                        <span>
+                            <span class="fullname">{{list.fullname}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body height-fill-screen table-responsive p-0 card-scroll">
+                    <div class="chat" data-chat="person" *ngFor="let item of list.chat">
+                        <div class="direct-chat-infos clearfix">
+                            <span class="direct-chat-name float-left">{{item.createdby}}</span>
+                            <span type="submit"  class="direct-chat-timestamp float-right" (click)="deletemessage()">{{item.timestamp}}</span>
+                        </div>
+                        <div class="direct-chat-text">
+                            {{item.message}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="write" class="input-group">
+                        <input type="text"  id="myInput" [(ngModel)]="message" name="message" placeholder="Type Message ..." class="form-control">
+                        <span class="input-group-append">
+                            <button type="submit" class="btn btn-primary" onclick="document.getElementById('myInput').value = ''"
+                                (click)="Save()">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

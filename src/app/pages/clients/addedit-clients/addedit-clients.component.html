@@ -1,0 +1,139 @@
+<ngx-spinner
+    bdColor="rgba(51, 51, 51, 0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-atom"
+>
+</ngx-spinner>
+<section class="content-header p-0">
+    <div class="container-fluid p-0">
+        <form [formGroup]="saveForm" (ngSubmit)="onSubmitClick()">
+            <div class="card">
+                <div class="card-header">
+                    <label class="card-title text-primary">{{
+                        modalTitle
+                    }}</label>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="float-label"
+                                    ><strong>USER NAME : </strong></label
+                                >
+                                <input
+                                    type="text"
+                                    name="user_name"
+                                    placeholder="ENTER SCRIPT NAME "
+                                    formControlName="user_name"
+                                    class="form-control"
+                                    maxlength="50"
+                                    upperCase
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="float-label">EMAIL: </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="user_email"
+                                    formControlName="user_email"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="float-label">CONTACT NO.: </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="user_contactno"
+                                    formControlName="user_contactno"
+                                    (keypress)="numberOnly($event)"
+                                    minlength="10"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="float-label">ADDRESS: </label>
+                                <textarea
+                                    name="user_address"
+                                    formControlName="user_address"
+                                    class="form-control"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="float-label">CITY: </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="user_city"
+                                    formControlName="user_city"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="float-label">PINCODE: </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="user_pincode"
+                                    formControlName="user_pincode"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="!ISEDIT">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="float-label"
+                                    >USER PASSWORD:
+                                </label>
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    name="password"
+                                    formControlName="password"
+                                    minlength="6"
+                                />
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-6">
+                          <div class="form-group">
+                            <label class="float-label">Profile Image: </label>
+                            <input type="file" class="form-control" name="profile_image" [(ngModel)]="profile_image"
+                              (change)="handleFileSelect($event)" #profileimage="ngModel">
+                          </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="card-footer clearfix">
+                    <button
+                        type="button"
+                        class="btn btn-default float-right"
+                        (click)="onCancel()"
+                    >
+                        Exit
+                    </button>
+                    <button type="submit" class="btn btn-info float-right mr-2">
+                        Save
+                    </button>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </form>
+    </div>
+</section>

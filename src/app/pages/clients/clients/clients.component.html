@@ -1,0 +1,104 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-atom">
+</ngx-spinner>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="card-title">
+                            <strong class="text-primary">{{
+                                tableTitle
+                                }}</strong>
+                        </h3>
+                        <div class="card-tools"></div>
+                    </div>
+
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm align-items-center justify-content-end">
+                            <button class="btn btn-sm mr-2 my-1 my-sm-0 btn-outline-success" (click)="onPageChange()"
+                                type="button">
+                                <i class="fa fa-sm fa-sync mr-1"></i><strong>REFRESH</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body height-fill-screen table-responsive p-0 card-scroll">
+                <table class="table text-nowrap table-sm table-striped table-bordered table-head-fixed">
+                    <thead>
+                        <tr>
+                            <th style="width: 550px">CLIENT NAME</th>
+                            <th style="width: 200px ; text-align: center;">CONTACT</th>
+                            <th style="width: 400px ; text-align: center;">EMAIL</th>
+                            <th style="width: 150px ; text-align: center;">STATUS</th>
+                            <th style="width: 150px ; text-align: center;">SUB. EXPIRY</th>
+                            <th style="width: 150px ; text-align: center;">EXT. DATE</th>
+                            <th style="width: 350px ; text-align: center;">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of rows">
+                            <tr>
+                                <td style="width: 550px">{{ item.user_name }}</td>
+                                <td style="width: 200px ; text-align: center;">{{ item.user_contactno }}</td>
+                                <td style="width: 400px ; text-align: center;">{{ item.user_email }}</td>
+                                <td style="width: 150px ; text-align: center;">
+                                    <button (click)="changestatus(item)" *ngIf="item.user_status"
+                                        class="btn btn-sm btn-outline-success" style="cursor: pointer">
+                                        Active
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" (click)="changestatus(item)"
+                                        *ngIf="!item.user_status" style="cursor: pointer">
+                                        Inactive
+                                    </button>
+                                </td>
+                                <td style="width: 150px; text-align: center;">
+                                    <span *ngIf="
+                                            item.subenddate !==
+                                            '0001-01-01T00:00:00'
+                                        ">{{
+                                        item.subenddate | date: 'dd/MM/yyyy'
+                                        }}</span>
+                                    <span *ngIf="
+                                            item.subenddate ===
+                                            '0001-01-01T00:00:00'
+                                        ">NOT SUBSCRIBED</span>
+                                </td>
+                                <td style="width: 150px ;;  text-align: center;">
+                                    <button class="btn btn-sm mr-2 my-1 my-sm-0 btn-outline-primary"
+                                        (click)="addExtDate(item.user_id)" type="button">
+                                        <i class="fa fa-sm fa-plus-circle mr-1"></i><strong>EXT. DATE</strong>
+                                    </button>
+                                </td>
+                                <td style="width: 350px ; text-align: center;">
+                                    <button class="btn btn-sm btn-outline-primary mr-2" type="button"
+                                        (click)="editItem(item)">
+                                        <i class="far fa-edit mr-1"></i>Edit
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-warning mr-2" type="button">
+                                        <i class="far fa-edit mr-1"></i>Reset
+                                        Password
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <ng-container *ngIf="rows?.length === 0">
+                    <div class="text-center my-2">No Records Found</div>
+                </ng-container>
+            </div>
+            <div class="card-footer clearfix">
+                <ngb-pagination class="float-right" [collectionSize]="totalRecords" [(page)]="currentPage"
+                    [pageSize]="10" [maxSize]="5" [boundaryLinks]="true" (pageChange)="onPageChange()">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+</section>
+ <table>
+    <div>
+        
+    </div> 
+ </table>

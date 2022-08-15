@@ -1,0 +1,66 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-atom">
+</ngx-spinner>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="card-title">
+                            <strong class="text-primary">{{
+                                tableTitle
+                                }}</strong>
+                        </h3>
+                        <div class="card-tools"></div>
+                    </div>
+
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm align-items-center justify-content-end">
+                            <button class="btn btn-sm mr-2 my-1 my-sm-0 btn-outline-success" (click)="onPageChange()"
+                                type="button">
+                                <i class="fa fa-sm fa-sync mr-1"></i><strong>REFRESH</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body height-fill-screen table-responsive p-0 card-scroll">
+                <table class="table text-nowrap table-sm table-striped table-bordered table-head-fixed">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">CLIENT NAME</th>
+                            <th style="text-align: center">CONTACT NO.</th>
+                            <th colspan="2" style="text-align: center">
+                                SUBSCRIPTION
+                            </th>
+                            <th style="text-align: center">AMOUNT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of rows">
+                            <tr>
+                                <td>{{ item.user_name }}</td>
+                                <td>{{ item.user_contactno }}</td>
+                                <td>
+                                    {{ item.startdate | date: 'dd/MM/yyyy' }}
+                                </td>
+                                <td>{{ item.enddate | date: 'dd/MM/yyyy' }}</td>
+                                <td style="text-align: right">
+                                    {{ item.transactionamount }}
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <ng-container *ngIf="rows?.length === 0">
+                    <div class="text-center my-2">No Records Found</div>
+                </ng-container>
+            </div>
+            <div class="card-footer clearfix">
+                <ngb-pagination class="float-right" [collectionSize]="totalRecords" [(page)]="currentPage"
+                    [pageSize]="10" [maxSize]="5" [boundaryLinks]="true" (pageChange)="onPageChange()">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+</section>

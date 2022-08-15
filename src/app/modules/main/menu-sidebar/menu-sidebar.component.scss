@@ -1,0 +1,62 @@
+:host {
+    display: block;
+}
+
+// slide in-out animation starts
+.nav-treevw {
+    max-height: 0px;
+    overflow-y: hidden;
+    -webkit-transition: ease-in-out 500ms max-height;
+    -moz-transition: ease-in-out 500ms max-height;
+    -o-transition: ease-in-out 500ms max-height;
+    transition: ease-in-out 500ms max-height;
+}
+
+.nav-treevw.opened {
+    max-height: 1000px;
+    -webkit-transition: ease-in-out 500ms max-height;
+    -moz-transition: ease-in-out 500ms max-height;
+    -o-transition: ease-in-out 500ms max-height;
+    transition: ease-in-out 500ms max-height;
+}
+
+.rotate {
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    -o-transition: 500ms;
+    transition: 500ms;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(
+        -90deg
+    ); /* Only for graceful degradation in IE9, cannot be transitioned */
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+// slide in-out animation ends
+
+.nav-tree-active {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #343a40 !important;
+}
+
+.nav-treevw > li {
+    cursor: pointer;
+}
+
+.nav-treevw > li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+    border-radius: 0.25rem;
+}
+
+.child-active,
+.child-active:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #000 !important;
+}
+
+.nav-pills .nav-link:not(.child-active):hover {
+    color: #fff !important;
+}

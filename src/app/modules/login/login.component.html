@@ -1,0 +1,35 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-atom">
+</ngx-spinner>
+<div class="card card-outline card-warning">
+    <div class="card-header text-center" style="background-color: #545454;">
+        <img src="../assets/img/logo.png" style="width: 70%" />
+    </div>
+    <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="loginByAuth2()">
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+                <input formControlName="email" type="email" class="form-control" placeholder="Username" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+                <input formControlName="password" type="password" class="form-control" placeholder="Password" />
+            </div>
+            <div class="d-flex justify-content-end">
+                <app-button [type]="'submit'" [block]="true" [loading]="isAuthLoading" [disabled]="isAuthLoading">
+                    Sign In
+                </app-button>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer text-center">
+        <strong class="text-success">DEVELOPED BY : TRUESYS FINTECH</strong>
+    </div>
+</div>

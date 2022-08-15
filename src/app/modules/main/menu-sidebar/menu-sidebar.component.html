@@ -1,0 +1,79 @@
+<!-- Brand Logo -->
+
+
+<a [routerLink]="['/']" class="brand-link">
+    <img src="assets/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        style="opacity: 0.8" />
+    <span class="brand-text font-weight-light">WINST</span>
+</a>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <!-- Sidebar user (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image" style="color: #c2c7d0">
+            <!-- <img [src]="user.picture || 'assets/img/default-profile.png'" class="img-circle elevation-2"
+                alt="User Image" /> -->
+            <i class="fas fa-lg fa-user ml-2 mt-1 pt-1"></i>
+        </div>
+        <div class="info">
+            <a href="javascript:" class="d-block">
+                <!-- <i class="fas fa-lg fa-user mr-2"></i> -->
+                {{ userName }}
+            </a>
+        </div>
+    </div>
+
+    <!-- {
+    "name":"",
+    "url":"",
+    "childitems" : [],
+    "state":""
+    } -->
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2" style="overflow-y: hidden">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+            <ng-container *ngFor="let item of menuItems">
+                <li class="nav-item" (click)="onMenuItemOpen(item)">
+                    <ng-container *ngIf="item.url !== undefined; else parentLink">
+                        <a [routerLink]="[item.url]" [class.active]="item.state" class="nav-link nav-tree"
+                            (click)="item.isOpen = !item.isOpen">
+                            <i class="nav-icon" [class]="item.icon"></i>
+                            <p>
+                                {{ item.name }}
+                                <ng-container *ngIf="item.children">
+                                    <i class="right fas fa-angle-left" [class.rotate]="item.isOpen"></i>
+                                </ng-container>
+                            </p>
+                        </a>
+                    </ng-container>
+                    <ng-template #parentLink>
+                        <a href="javascript:" [class.active]="item.state" class="nav-link nav-tree"
+                            (click)="item.isOpen = !item.isOpen">
+                            <i class="nav-icon" [class]="item.icon"></i>
+                            <p>
+                                {{ item.name }}
+                                <ng-container *ngIf="item.children">
+                                    <i class="right fas fa-angle-left" [class.rotate]="item.isOpen"></i>
+                                </ng-container>
+                            </p>
+                        </a>
+                    </ng-template>
+                    <ul class="nav nav-treevw" [class.opened]="item.isOpen">
+                        <ng-container *ngFor="let child of item.children">
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="child.url" routerLinkActive="child-active">
+                                    <i class="nav-icon" [class]="child.icon"></i>
+                                    <p>{{ child.name }}</p>
+                                </a>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </li>
+            </ng-container>
+        </ul>
+    </nav>
+</div>

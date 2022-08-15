@@ -1,0 +1,76 @@
+<ngx-spinner
+    bdColor="rgba(51, 51, 51, 0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-atom"
+>
+</ngx-spinner>
+<section class="content-header p-0">
+    <div class="container-fluid p-0">
+        <form [formGroup]="saveForm" (ngSubmit)="onSubmitClick()">
+            <div class="card">
+                <div class="card-header">
+                    <label class="card-title text-primary">{{
+                        modalTitle
+                    }}</label>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="float-label"
+                            ><strong>NOTOFICATION TITLE : </strong></label
+                        >
+                        <input
+                            type="text"
+                            name="nm_title"
+                            placeholder="ENTER TITLE"
+                            formControlName="nm_title"
+                            class="form-control"
+                            maxlength="50"
+                            upperCase
+                        />
+                        <div
+                            *ngIf="
+                                (submitted && f.nm_title.errors) ||
+                                (f.nm_title.errors && f.nm_title.dirty)
+                            "
+                        >
+                            <div
+                                *ngIf="f.nm_title.errors.required"
+                                class="messages text-danger"
+                            >
+                                please enter the valid notification title.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="float-label"
+                            ><strong>NOTOFICATION MESSAGE : </strong></label
+                        >
+                        <textarea
+                            type="text"
+                            name="nm_description"
+                            placeholder="ENTER MESSAGE"
+                            formControlName="nm_description"
+                            class="form-control"
+                            upperCase
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="card-footer clearfix">
+                    <button
+                        type="button"
+                        class="btn btn-default float-right"
+                        (click)="onCancel()"
+                    >
+                        Exit
+                    </button>
+                    <button type="submit" class="btn btn-info float-right mr-2">
+                        Save
+                    </button>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </form>
+    </div>
+</section>

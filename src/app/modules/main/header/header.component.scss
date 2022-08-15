@@ -1,0 +1,58 @@
+.fa-bars {
+    cursor: pointer;
+}
+
+.nav-item {
+    .nav-link {
+        cursor: pointer;
+    }
+}
+
+::ng-deep .ng-value-label {
+    color: #000080 !important;
+    font-weight: bolder;
+}
+
+::ng-deep
+    .ng-dropdown-panel
+    .ng-dropdown-panel-items
+    .ng-option.ng-option-marked {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.text-blue {
+    color: blue;
+}
+
+input,
+textarea {
+    color: #000080 !important;
+    font-weight: bolder;
+}
+
+.text-darkblue {
+    color: #000080 !important;
+}
+
+.dropdown-item {
+    font-size: 18px !important;
+}
+
+.menu-item-big {
+    font-size: 18px !important;
+}
+
+.wrapper {
+    max-width: 960px; 
+  
+    padding-right: 10px;
+    padding-left: 10px;
+
+  }
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    background-color: #fff;
+    padding: 3px 5px;
+    //border-bottom: 1px solid #00008042;
+    border-bottom: 1px solid #007bff42;
+}
